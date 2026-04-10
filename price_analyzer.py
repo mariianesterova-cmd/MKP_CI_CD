@@ -13,4 +13,10 @@ def read_data(file_path):
             )
     return data
 
-
+def filter_last_month(data, product_name):
+    last_month = datetime.now() - timedelta(days=30)
+    return [
+        (date, price)
+        for name, date, price in data
+        if name == product_name and date >= last_month
+    ]
