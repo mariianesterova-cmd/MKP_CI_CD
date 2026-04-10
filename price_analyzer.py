@@ -20,3 +20,9 @@ def filter_last_month(data, product_name):
         for name, date, price in data
         if name == product_name and date >= last_month
     ]
+
+def calculate_price_change(filtered_data):
+    if len(filtered_data) < 2:
+        return 0
+    filtered_data.sort(key=lambda x: x[0])
+    return filtered_data[-1][1] - filtered_data[0][1]
