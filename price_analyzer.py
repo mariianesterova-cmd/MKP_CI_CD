@@ -26,3 +26,8 @@ def calculate_price_change(filtered_data):
         return 0
     filtered_data.sort(key=lambda x: x[0])
     return filtered_data[-1][1] - filtered_data[0][1]
+
+def get_price_change(file_path, product_name):
+    data = read_data(file_path)
+    filtered = filter_last_month(data, product_name)
+    return calculate_price_change(filtered)
